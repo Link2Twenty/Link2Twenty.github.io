@@ -1,1 +1,1 @@
-# Link2Twenty.github.io >> README.md
+# Link2Twenty.github.io
