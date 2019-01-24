@@ -2,6 +2,10 @@
   --header-background: #37474F;
   --header-border-color: #263238;
 
+  --body-pattern: 
+  linear-gradient(90deg, #cfcfcf 20px, transparent 1%) center, 
+  linear-gradient(#cfcfcf 20px, #263238 1%) center, #cfcfcf;
+
   --material-shadow-1: 0 01px 03px rgba(0,0,0,0.12), 0 01px 02px rgba(0,0,0,0.24);
   --material-shadow-2: 0 03px 06px rgba(0,0,0,0.16), 0 03px 06px rgba(0,0,0,0.23);
   --material-shadow-3: 0 10px 20px rgba(0,0,0,0.19), 0 06px 06px rgba(0,0,0,0.23);
@@ -11,7 +15,8 @@
 
 body {
   margin: 0;
-  background: #FAFAFA;
+  background: var(--body-pattern,#cfcfcf);
+  background-size: 22px 22px;
   font-family: Open Sans;
 }
 
@@ -20,11 +25,35 @@ nav.header {
   width: 100vw;
   background: var(--header-background, #000);
   border-bottom: 1px solid var(--header-border-color, #000);
-  box-shadow: var(--header-shadow, var(--material-shadow-1))
+  box-shadow: var(--header-shadow, var(--material-shadow-1));
 }
 
 *.center {
   text-align: center;
+}
+
+.profile {
+  position: relative;
+  margin-top: 1em;
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50%;
+  box-shadow: var(--profile-shadow, var(--material-shadow-2));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.card-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  margin-top: 1em;
+  border-radius: 2px;
+  background: white;
+  box-shadow: var(--card-shadow, var(--material-shadow-1));
+  padding: 15px 25px;
 }
 
 /* Tablet Portrait */
@@ -39,6 +68,11 @@ nav.header {
 
 /* Desktop */
 @media only screen and (min-width: 1200px) {
+  .profile {
+    width: 150px;
+    height: 150px;
+    border-width: 8px;
+  }
   .contents {
     margin: 0 auto;
     width: 90%;
