@@ -3,8 +3,8 @@
   --header-border-color: #263238;
 
   --body-pattern: 
-  linear-gradient(90deg, #cfcfcf 20px, transparent 1%) center, 
-  linear-gradient(#cfcfcf 20px, #263238 1%) center, #cfcfcf;
+    linear-gradient(90deg, #cfcfcf 20px, transparent 1%) center, 
+    linear-gradient(#cfcfcf 20px, #263238 1%) center, #cfcfcf;
 
   --material-shadow-1: 0 01px 03px rgba(0,0,0,0.12), 0 01px 02px rgba(0,0,0,0.24);
   --material-shadow-2: 0 03px 06px rgba(0,0,0,0.16), 0 03px 06px rgba(0,0,0,0.23);
@@ -45,7 +45,14 @@ nav.header {
 
 .card-flex {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.card-flex .card {
+  margin: .5em;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
 .card {
@@ -54,6 +61,19 @@ nav.header {
   background: white;
   box-shadow: var(--card-shadow, var(--material-shadow-1));
   padding: 15px 25px;
+}
+
+.social img {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  transition: transform 100ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  will-change: transform;
+}
+
+.social:hover img{
+  transform: translateX(-50%) scale(1.1) rotate(15deg);
 }
 
 /* Tablet Portrait */
@@ -76,6 +96,9 @@ nav.header {
   .contents {
     margin: 0 auto;
     width: 90%;
+  }
+  .card-flex .card {
+    min-width: 200px;
   }
 }
 
