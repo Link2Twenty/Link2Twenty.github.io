@@ -14,6 +14,11 @@
 
 <body>
   <nav class="header">
+    <button class="menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <div class="contents">
       <span>Andrew Bone</span>
       <ul class="menu">
@@ -95,10 +100,21 @@
   </div>
   <footer>
     <div class="contents">
-      <span>This <a rel="noreferrer" target="_blank" href="https://github.com/Link2Twenty/Link2Twenty.github.io">website</a> is open source!</span>
+      <span>This <a rel="noreferrer" target="_blank" href="https://github.com/Link2Twenty/Link2Twenty.github.io">website</a>
+        is open source!</span>
       <span>© 2019 link2twenty</span>
     </div>
   </footer>
+
+  <div aria-hidden class="slide_navigation">
+    <nav class="draw">
+      <ul class="menu">
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#social">Social</a></li>
+      </ul>
+    </nav>
+    <div class="backdrop"></div>
+  </div>
   <script src="js/main.js"></script>
 
 </body>

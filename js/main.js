@@ -92,14 +92,43 @@ getDevRSS('link2twenty').then(data => {
 
   for (let post of posts) {
     const title = post.title['#text'];
-    const published = new Date(post.pubDate['#text']).toLocaleString('en-gb', { 
+    const published = new Date(post.pubDate['#text']).toLocaleString('en-gb', {
       weekday: 'short',
-      day: '2-digit', 
+      day: '2-digit',
       month: 'long',
       year: 'numeric'
     });
     const url = post.link['#text'];
 
     parent.appendChild(makePostCard(title, published, url))
+  }
+});
+
+const menuButt = document.querySelector('nav button.menu');
+const menuDraw = document.querySelector('.slide_navigation');
+const menuLink = menuDraw.querySelectorAll('.menu a');
+const backdrop = menuDraw.querySelector('.backdrop');
+
+menuButt.addEventListener('click', _ => {
+  menuDraw.removeAttribute('aria-hidden');
+});
+
+for (let link of menuLink) {
+  link.addEventListener('click', _ => {
+    menuDraw.setAttribute('aria-hidden', "");
+  })
+}
+
+backdrop.addEventListener('click', _ => {
+  menuDraw.setAttribute('aria-hidden', "");
+})
+
+backdrop.addEventListener('click', _ => {
+  menuDraw.setAttribute('aria-hidden', "");
+})
+
+document.addEventListener('keyup', e => {
+  if (e.keyCode == 27 && !menuDraw.hasAttribute('aria-hidden')) {
+    menuDraw.setAttribute('aria-hidden', "");
   }
 })
