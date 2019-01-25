@@ -4,7 +4,7 @@
   --header-background: #37474F;
   --header-border-color: #263238;
 
-  --description-slant-height: 45px;
+  --description-slant-height: 20px;
 
   --body-pattern: 
     linear-gradient(90deg, #cfcfcf 20px, transparent 1%) center, 
@@ -241,6 +241,9 @@ header.description::after {
 
 /* Tablet Landscape */
 @media only screen and (min-width: 900px) {
+  :root {
+    --description-slant-height: 45px;
+  }
   .card-flex .card,
   #blog.card-flex .card {
     min-width: calc(25% - 50px - 1em);
