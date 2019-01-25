@@ -35,6 +35,7 @@ nav.header {
 
 header.description {
   position: relative;
+  padding: 5px 0;
   background: #4f5b62;
   color: white;
   margin-bottom: calc(var(--description-slant-height, 50px) + 0.5em);
