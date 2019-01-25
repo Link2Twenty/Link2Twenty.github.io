@@ -285,7 +285,7 @@ header.description::after {
   nav.header ul.menu a {
     text-decoration: none;
     color: white;
-    margin: 0 3px;
+    margin: 0 6px;
   }
   
   nav.header ul.menu a:hover {
