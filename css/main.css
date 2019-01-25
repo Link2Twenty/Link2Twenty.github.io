@@ -218,6 +218,16 @@ header.description::after {
   will-change: transform;
 }
 
+#intro a {
+  text-decoration: none;
+  color: currentColor;
+  font-weight: bold;
+}
+
+#intro a:hover {
+  text-decoration: underline;
+}
+
 .social a {
   text-decoration: none;
   color: currentColor;

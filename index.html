@@ -23,25 +23,38 @@
       <span>Andrew Bone</span>
       <ul class="menu">
         <li><a href="#">Home</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#social">Social</a></li>
+        <li><a href="#intro_anchor">Intro</a></li>
+        <li><a href="#blog_anchor">Blog</a></li>
+        <li><a href="#social_anchor">Social</a></li>
       </ul>
     </div>
   </nav>
   <header class="description">
     <h1 class="center">Hi, I'm Andrew</h1>
-    <p class="center">I love to work with and talk about the web.</p>
+    <p class="center">I love to work with, and talk about, the web.</p>
     <img alt="profile image" class="profile" src="./images/profile.jpg" />
   </header>
   <div class="contents">
-    <div class="card">
+    <div id="intro" class="card">
+      <a class="anchor" name="intro_anchor"></a>
+      <h2 class="center">
+          A little about me
+        </h2>
       <p>
-        This will become a Portfolio page to show case some open source projects and blog posts.
+        Welcome to my portfolio, my name is Andrew and I've been a sysadmin since 2010 but my passion has always been
+        web development.
+        Below you will find some of my recent blog posts on <a href="https://dev.to/link2twenty">dev.to</a>.
+        I mostly post about A11y, because the web should be for everyone.
+        There are also a few links to other other places you can find and follow me on the web.
+      </p>
+      <p>
+        If you'd like to contact me to talk jobs my CV can be <a href="https://drive.google.com/open?id=14-LfYdzw6OcE3_Cgl4cfLhqJDBmQkav7">downloaded
+          here.</a>
       </p>
     </div>
     <!-- Blog posts -->
     <div class="card">
-      <a class="anchor" name="blog"></a>
+      <a class="anchor" name="blog_anchor"></a>
       <h2 class="center">
         Latest blog posts
       </h2>
@@ -49,7 +62,7 @@
     <div id="blog" class="card-flex"></div>
     <!-- Social links -->
     <div class="card">
-      <a class="anchor" name="social"></a>
+      <a class="anchor" name="social_anchor"></a>
       <h2 class="center">
         Find me online
       </h2>
@@ -111,8 +124,9 @@
     <nav class="draw">
       <ul class="menu">
         <li><a href="#">Home</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#social">Social</a></li>
+        <li><a href="#intro_anchor">About me</a></li>
+        <li><a href="#blog_anchor">Blog posts</a></li>
+        <li><a href="#social_anchor">Find me online</a></li>
       </ul>
     </nav>
     <div class="backdrop"></div>
