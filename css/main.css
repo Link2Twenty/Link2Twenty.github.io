@@ -164,6 +164,8 @@ header.description::after {
   margin-top: 1em;
   width: 50vmin;
   height: 50vmin;
+  max-width: 400px;
+  max-height: 400px;
   border-radius: 50%;
   box-shadow: var(--profile-shadow, var(--material-shadow-2));
   left: 50%;
