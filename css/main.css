@@ -28,9 +28,34 @@ nav.header {
   top: 0;
   z-index: 1;
   height: 50px;
+  color: white;
   background: var(--header-background, #000);
   border-bottom: 1px solid var(--header-border-color, #000);
   box-shadow: var(--header-shadow, var(--material-shadow-1));
+}
+
+footer {
+  line-height: 50px;
+  margin-top: 1em;
+  height: 50px;
+  background: var(--header-background, #000);
+  border-top: 1px solid var(--header-border-color, #000);
+  color: white;
+}
+
+footer .contents {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer .contents a{
+  text-decoration: none;
+  color:currentColor;
+  font-weight: bold;
+}
+
+footer .contents a:hover{
+  text-decoration: underline;
 }
 
 header.description {
