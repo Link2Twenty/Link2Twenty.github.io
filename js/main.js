@@ -76,6 +76,7 @@ function makePostCard(title, published, url) {
   head.appendChild(document.createTextNode(title));
   const date = document.createElement("p");
   date.classList.add('date');
+  date.classList.add('center');
   date.appendChild(document.createTextNode(published));
   link.appendChild(img);
   link.appendChild(head);
@@ -86,12 +87,18 @@ function makePostCard(title, published, url) {
 }
 
 getDevRSS('link2twenty').then(data => {
-  const posts = xmlToJson(data).rss.channel.item.slice(0,3);
+  const posts = xmlToJson(data).rss.channel.item.slice(0, 3);
   const parent = document.querySelector('#blog');
 
   for (let post of posts) {
     const title = post.title['#text'];
-    const published = new Date(post.pubDate['#text']);
+    const published = new Date(post.pubDate['#text']).toLocaleString('en-gb', 
+    { 
+      weekday: 'short',
+      day: '2-digit', 
+      month: 'long',
+      year: 'numeric'
+    });;
     const url = post.link['#text'];
 
     parent.appendChild(makePostCard(title, published, url))
