@@ -65,6 +65,7 @@ function makePostCard(title, published, url) {
   const link = document.createElement('a');
   link.setAttribute("target", "_blank");
   link.setAttribute("href", url);
+  link.setAttribute("rel", "noreferrer");
   // Dev logo
   const img = document.createElement("img");
   img.setAttribute("src", "./images/devto.png");
