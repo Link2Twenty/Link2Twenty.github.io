@@ -107,9 +107,11 @@ button.menu span:first-child {
 }
 
 footer {
-  line-height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin-top: 1em;
-  height: 50px;
+  min-height: 50px;
   background: var(--header-background, #000);
   border-top: 1px solid var(--header-border-color, #000);
   color: white;
@@ -204,7 +206,7 @@ header.description::after {
   border-radius: 2px;
   background: white;
   box-shadow: var(--card-shadow, var(--material-shadow-1));
-  padding: 15px 25px;
+  padding: 15px 5px;
 }
 
 .social img {
