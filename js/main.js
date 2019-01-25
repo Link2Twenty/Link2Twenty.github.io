@@ -92,13 +92,12 @@ getDevRSS('link2twenty').then(data => {
 
   for (let post of posts) {
     const title = post.title['#text'];
-    const published = new Date(post.pubDate['#text']).toLocaleString('en-gb', 
-    { 
+    const published = new Date(post.pubDate['#text']).toLocaleString('en-gb', { 
       weekday: 'short',
       day: '2-digit', 
       month: 'long',
       year: 'numeric'
-    });;
+    });
     const url = post.link['#text'];
 
     parent.appendChild(makePostCard(title, published, url))

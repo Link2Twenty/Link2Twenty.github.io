@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 :root {
   --header-background: #37474F;
   --header-border-color: #263238;
@@ -28,10 +30,33 @@ nav.header {
   top: 0;
   z-index: 1;
   height: 50px;
+  line-height: 50px;
   color: white;
   background: var(--header-background, #000);
   border-bottom: 1px solid var(--header-border-color, #000);
   box-shadow: var(--header-shadow, var(--material-shadow-1));
+}
+nav.header .contents{
+  display: flex;
+  justify-content: space-between;
+}
+
+nav.header ul.menu {
+  margin: 0;
+  display: inline-flex;
+  text-transform: uppercase;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+nav.header ul.menu a {
+  text-decoration: none;
+  color: white;
+  margin: 0 3px;
+}
+
+nav.header ul.menu a:hover {
+  text-decoration: underline;
 }
 
 footer {
@@ -114,14 +139,21 @@ header.description::after {
 #blog.card-flex .card {
   min-width: calc(100% - 50px - 1em);
 }
+
 .date {
   opacity: 0.6;
+}
+
+.anchor {
+  position: absolute;
+  top: calc((50px + 1em) * -1);
 }
 
 .card {
   flex-grow: 1;
   flex-basis: 0;
   margin: 0.5em;
+  position: relative;
   border-radius: 2px;
   background: white;
   box-shadow: var(--card-shadow, var(--material-shadow-1));
@@ -147,7 +179,7 @@ header.description::after {
 }
 
 .social:hover img{
-  transform: translateX(-50%) scale(1.1) rotate(15deg);
+  transform: translateX(-50%) scale(1.1) rotate(-10deg);
 }
 
 /* Tablet Portrait */
