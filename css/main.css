@@ -2,6 +2,8 @@
   --header-background: #37474F;
   --header-border-color: #263238;
 
+  --description-slant-height: 45px;
+
   --body-pattern: 
     linear-gradient(90deg, #cfcfcf 20px, transparent 1%) center, 
     linear-gradient(#cfcfcf 20px, #263238 1%) center, #cfcfcf;
@@ -18,14 +20,39 @@ body {
   background: var(--body-pattern,#cfcfcf);
   background-size: 22px 22px;
   font-family: Open Sans;
+  overflow-x: hidden;
 }
 
 nav.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   height: 50px;
-  width: 100vw;
   background: var(--header-background, #000);
   border-bottom: 1px solid var(--header-border-color, #000);
   box-shadow: var(--header-shadow, var(--material-shadow-1));
+}
+
+header.description {
+  position: relative;
+  background: #4f5b62;
+  color: white;
+  margin-bottom: calc(var(--description-slant-height, 50px) + 0.5em);
+}
+
+header.description h1 {
+  margin-top: 0px;
+}
+
+header.description::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: calc(var(--description-slant-height, 50px) * -1 + 2px);
+  border-style: solid;
+  border-width: var(--description-slant-height, 50px) 100vw 0 0;
+  border-color: #4f5b62 transparent transparent transparent;
 }
 
 *.center {
@@ -43,6 +70,11 @@ nav.header {
   transform: translateX(-50%);
 }
 
+.contents {
+  margin: 0 auto;
+  width: calc(100% - 1em);
+}
+
 .card-flex {
   display: flex;
   flex-wrap: wrap;
@@ -50,13 +82,13 @@ nav.header {
 }
 
 .card-flex .card {
-  margin: .5em;
   flex-grow: 1;
   flex-basis: 0;
+  min-width: calc(100% - 65px - 1em);
 }
 
 .card {
-  margin-top: 1em;
+  margin: 0.5em;
   border-radius: 2px;
   background: white;
   box-shadow: var(--card-shadow, var(--material-shadow-1));
@@ -72,18 +104,31 @@ nav.header {
   will-change: transform;
 }
 
+.social a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+.social a:hover h3{
+  text-decoration: underline;
+}
+
 .social:hover img{
   transform: translateX(-50%) scale(1.1) rotate(15deg);
 }
 
 /* Tablet Portrait */
 @media only screen and (min-width: 600px) {
-  
+  .card-flex .card {
+    min-width: 125px;
+  }
 }
 
 /* Tablet Landscape */
 @media only screen and (min-width: 900px) {
-  
+  .card-flex .card {
+    min-width: 225px;
+  }
 }
 
 /* Desktop */
@@ -94,8 +139,7 @@ nav.header {
     border-width: 8px;
   }
   .contents {
-    margin: 0 auto;
-    width: 90%;
+    width: 1150px;
   }
   .card-flex .card {
     min-width: 200px;
@@ -105,7 +149,6 @@ nav.header {
 /* Large Desktop */
 @media only screen and (min-width: 1600px) {
   .contents {
-    margin: 0 auto;
     width: 1300px;
   }
 }
