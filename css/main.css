@@ -243,10 +243,6 @@ header.description::after {
   white-space: nowrap;
 }
 
-.social:hover img{
-  transform: translateX(-50%) scale(1.1) rotate(-10deg);
-}
-
 /* Tablet Portrait */
 @media only screen and (min-width: 600px) {
   .card-flex .card,
@@ -268,6 +264,9 @@ header.description::after {
 
 /* Desktop */
 @media only screen and (min-width: 1200px) {
+  .social:hover img{
+    transform: translateX(-50%) scale(1.1) rotate(-10deg);
+  }
   .profile {
     width: 150px;
     height: 150px;
