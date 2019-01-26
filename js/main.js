@@ -112,20 +112,20 @@ menuButt.addEventListener('click', _ => {
 
 for (let link of menuLink) {
   link.addEventListener('click', _ => {
-    menuDraw.setAttribute('aria-hidden', "");
+    menuDraw.setAttribute('aria-hidden', "true");
   })
 }
 
 backdrop.addEventListener('click', _ => {
-  menuDraw.setAttribute('aria-hidden', "");
+  menuDraw.setAttribute('aria-hidden', "true");
 })
 
 backdrop.addEventListener('click', _ => {
-  menuDraw.setAttribute('aria-hidden', "");
+  menuDraw.setAttribute('aria-hidden', "true");
 })
 
 document.addEventListener('keyup', e => {
   if (e.keyCode == 27 && !menuDraw.hasAttribute('aria-hidden')) {
-    menuDraw.setAttribute('aria-hidden', "");
+    menuDraw.setAttribute('aria-hidden', "true");
   }
 })
