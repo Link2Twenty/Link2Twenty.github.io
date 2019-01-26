@@ -58,14 +58,12 @@ function xmlToJson(xml) {
 
 function makePostCard(title, published, url) {
   // Whole card
-  const card = document.createElement('div');
+  const card = document.createElement('a');
   card.classList.add('card');
   card.classList.add('social');
-  // Link to post
-  const link = document.createElement('a');
-  link.setAttribute("target", "_blank");
-  link.setAttribute("href", url);
-  link.setAttribute("rel", "noreferrer");
+  card.setAttribute("target", "_blank");
+  card.setAttribute("href", url);
+  card.setAttribute("rel", "noreferrer");
   // Dev logo
   const img = document.createElement("img");
   img.setAttribute("src", "./images/devto.png");
@@ -78,10 +76,9 @@ function makePostCard(title, published, url) {
   date.classList.add('date');
   date.classList.add('center');
   date.appendChild(document.createTextNode(published));
-  link.appendChild(img);
-  link.appendChild(head);
-  link.appendChild(date);
-  card.appendChild(link);
+  card.appendChild(img);
+  card.appendChild(head);
+  card.appendChild(date);
 
   return card;
 }

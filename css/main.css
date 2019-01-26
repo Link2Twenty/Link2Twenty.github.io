@@ -242,16 +242,16 @@ header.description::after {
   text-decoration: underline;
 }
 
-.social a {
+a.social {
   text-decoration: none;
   color: currentColor;
 }
 
-.social a:hover h3{
+a.social:hover h3{
   text-decoration: underline;
 }
 
-.social a h3{
+a.social h3{
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
