@@ -188,17 +188,17 @@ header.description::after {
   width: calc(100% - 1em);
 }
 
-.card-flex {
+.card-group {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.card-flex .card {
+.card-group .card {
   min-width: calc(50% - 50px - 1em);
 }
 
-#blog.card-flex .card {
+#blog.card-group .card {
   min-width: calc(100% - 50px - 1em);
 }
 
@@ -259,8 +259,8 @@ header.description::after {
 
 /* Tablet Portrait */
 @media only screen and (min-width: 600px) {
-  .card-flex .card,
-  #blog.card-flex .card {
+  .card-group .card,
+  #blog.card-group .card {
     min-width: calc((100% / 3) - 50px - 1em);
   }
 }
@@ -270,8 +270,8 @@ header.description::after {
   :root {
     --description-slant-height: 45px;
   }
-  .card-flex .card,
-  #blog.card-flex .card {
+  .card-group .card,
+  #blog.card-group .card {
     min-width: calc(25% - 50px - 1em);
   }
 }
@@ -289,7 +289,7 @@ header.description::after {
   .contents {
     width: 1150px;
   }
-  .card-flex .card {
+  .card-group .card {
     min-width: 200px;
   }
   nav.header .contents{
