@@ -139,7 +139,8 @@ footer .contents a{
   font-weight: bold;
 }
 
-footer .contents a:hover{
+footer .contents a:hover,
+footer .contents a:focus{
   text-decoration: underline;
 }
 
@@ -238,7 +239,8 @@ header.description::after {
   font-weight: bold;
 }
 
-#intro a:hover {
+#intro a:hover,
+#intro a:focus {
   text-decoration: underline;
 }
 
@@ -247,7 +249,8 @@ a.social {
   color: currentColor;
 }
 
-a.social:hover h3{
+a.social:hover h3,
+a.social:focus h3{
   text-decoration: underline;
 }
 
@@ -278,7 +281,8 @@ a.social h3{
 
 /* Desktop */
 @media only screen and (min-width: 1200px) {
-  .social:hover img{
+  .social:hover img,
+  .social:focus img{
     transform: translateX(-50%) scale(1.1) rotate(-10deg);
   }
   .profile {
@@ -311,7 +315,8 @@ a.social h3{
     margin: 0 6px;
   }
   
-  nav.header ul.menu a:hover {
+  nav.header ul.menu a:hover,
+  nav.header ul.menu a:focus {
     text-decoration: underline;
   }
 
