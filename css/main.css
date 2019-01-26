@@ -3,13 +3,22 @@
 :root {
   --header-background: #37474F;
   --header-border-color: #263238;
+  --header-color: #fff;
 
+  --description-background: #4f5b62;
+  --description-color: #fff;
   --description-slant-height: 20px;
 
-  --body-pattern: 
-    linear-gradient(90deg, #cfcfcf 20px, transparent 1%) center, 
-    linear-gradient(#cfcfcf 20px, #263238 1%) center, #cfcfcf;
+  --body-background: #cfcfcf;
+  --body-dot-colour: #263238;
 
+  --card-background: #fff;
+  --card-color: #000;
+
+  --body-pattern: 
+    linear-gradient(90deg, var(--body-background) 20px, transparent 1%) center, 
+    linear-gradient(var(--body-background) 20px, var(--body-dot-colour) 1%) center, var(--body-background);
+  
   --material-shadow-1: 0 01px 03px rgba(0,0,0,0.12), 0 01px 02px rgba(0,0,0,0.24);
   --material-shadow-2: 0 03px 06px rgba(0,0,0,0.16), 0 03px 06px rgba(0,0,0,0.23);
   --material-shadow-3: 0 10px 20px rgba(0,0,0,0.19), 0 06px 06px rgba(0,0,0,0.23);
@@ -19,6 +28,7 @@
 
 body {
   margin: 0;
+  background: var(--body-background);
   background: var(--body-pattern,#cfcfcf);
   background-size: 22px 22px;
   font-family: Open Sans;
@@ -27,11 +37,12 @@ body {
 
 nav.header {
   position: sticky;
+  position: -webkit-sticky;
   top: 0;
   z-index: 1;
   height: 50px;
   line-height: 50px;
-  color: white;
+  color: var(--header-color);
   background: var(--header-background, #000);
   border-bottom: 1px solid var(--header-border-color, #000);
   box-shadow: var(--header-shadow, var(--material-shadow-1));
@@ -50,7 +61,7 @@ button.menu span {
   display:block;
   width: 35px;
   height: 5px;
-  background-color: white;
+  background-color: var(--header-color);
   margin-top: 5px;
 }
 button.menu span:first-child {
@@ -65,7 +76,7 @@ button.menu span:first-child {
   height: 100vh;
   width: 350px;
   max-width: 80vw;
-  background: #4f5b62;
+  background: var(--description-background);
   transform: translateX(-100%);
   transition: transform 150ms cubic-bezier(0.4, 0.0, 0.2, 1);
 }
@@ -79,7 +90,7 @@ button.menu span:first-child {
 .slide_navigation ul.menu a {
   display: block; 
   text-decoration: none;
-  color: white;
+  color: var(--description-color);
   padding: 15px 0;
   width: 100%;
   text-align: center;
@@ -114,7 +125,7 @@ footer {
   min-height: 50px;
   background: var(--header-background, #000);
   border-top: 1px solid var(--header-border-color, #000);
-  color: white;
+  color: var(--header-color);
 }
 
 footer .contents {
@@ -135,8 +146,8 @@ footer .contents a:hover{
 header.description {
   position: relative;
   padding: 5px 0;
-  background: #4f5b62;
-  color: white;
+  background: var(--description-background);
+  color: var(--description-color);
   margin-bottom: calc(var(--description-slant-height, 50px) + 0.5em);
 }
 
@@ -152,7 +163,7 @@ header.description::after {
   bottom: calc(var(--description-slant-height, 50px) * -1 + 1px);
   border-style: solid;
   border-width: var(--description-slant-height, 50px) 100vw 0 0;
-  border-color: #4f5b62 transparent transparent transparent;
+  border-color: var(--description-background) transparent transparent transparent;
 }
 
 *.center {
@@ -206,7 +217,8 @@ header.description::after {
   margin: 0.5em;
   position: relative;
   border-radius: 2px;
-  background: white;
+  background: var(--card-background);
+  color: var(--card-color);
   box-shadow: var(--card-shadow, var(--material-shadow-1));
   padding: 15px 25px;
 }
@@ -295,7 +307,7 @@ header.description::after {
   
   nav.header ul.menu a {
     text-decoration: none;
-    color: white;
+    color: var(--header-color);
     margin: 0 6px;
   }
   
