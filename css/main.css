@@ -157,7 +157,7 @@ header.description {
   padding: 5px 0;
   background: var(--description-background);
   color: var(--description-color);
-  margin-bottom: var(--description-slant-height, 50px);
+  margin-bottom: calc(var(--description-slant-height, 50px) + 0.5em);
 }
 
 header.description h1 {
@@ -198,8 +198,7 @@ header.description::after {
 }
 
 #main_body.contents {
-  margin: 0.5em auto;
-  min-height: calc()
+  margin-bottom: 0.5em;
 }
 
 .card-group {
@@ -235,6 +234,11 @@ header.description::after {
   color: var(--card-color);
   box-shadow: var(--card-shadow, var(--material-shadow-1));
   padding: 15px 25px;
+}
+
+.head.card {
+  border-bottom: solid #F4511E 4px;
+  border-radius: 2px 2px 0 0;
 }
 
 .social img {
