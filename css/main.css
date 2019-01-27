@@ -277,6 +277,11 @@ a.social h3{
   white-space: nowrap;
 }
 
+a.social:hover,
+a.social:focus{
+    box-shadow: var(--material-shadow-2);
+  }
+
 /* Tablet Portrait */
 @media only screen and (min-width: 600px) {
   .card-group .card,
@@ -298,8 +303,8 @@ a.social h3{
 
 /* Desktop */
 @media only screen and (min-width: 1200px) {
-  .social:hover img,
-  .social:focus img{
+  a.social:hover img,
+  a.social:focus img{
     transform: translateX(-50%) scale(1.1) rotate(-10deg);
   }
   .profile {
