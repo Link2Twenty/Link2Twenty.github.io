@@ -264,6 +264,7 @@ header.description::after {
 a.social {
   text-decoration: none;
   color: currentColor;
+  transition: box-shadow 100ms cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 a.social:hover h3,
