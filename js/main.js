@@ -24,6 +24,7 @@ function xmlToJson(xml) {
   var obj = {};
 
   if (xml.nodeType == 1) { // element
+    
     // do attributes
     if (xml.attributes.length > 0) {
       obj["@attributes"] = {};

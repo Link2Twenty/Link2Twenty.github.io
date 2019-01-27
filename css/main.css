@@ -35,6 +35,7 @@
 }
 
 body {
+  position: relative;
   margin: 0;
   background: var(--body-background);
   background: var(--body-pattern,#cfcfcf);
@@ -129,7 +130,6 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 1em;
   min-height: 50px;
   background: var(--header-background, #000);
   border-top: 1px solid var(--header-border-color, #000);
@@ -157,7 +157,7 @@ header.description {
   padding: 5px 0;
   background: var(--description-background);
   color: var(--description-color);
-  margin-bottom: calc(var(--description-slant-height, 50px) + 0.5em);
+  margin-bottom: var(--description-slant-height, 50px);
 }
 
 header.description h1 {
@@ -195,6 +195,11 @@ header.description::after {
 .contents {
   margin: 0 auto;
   width: calc(100% - 1em);
+}
+
+#main_body.contents {
+  margin: 0.5em auto;
+  min-height: calc()
 }
 
 .card-group {
@@ -330,6 +335,26 @@ a.social h3{
 
   button.menu {
     display:none;
+  }
+
+  div.splash {
+    position: absolute;
+    width: 100vw;
+    height: 350px;
+    bottom: 0;
+    background: var(--description-background);
+    z-index: -1;
+  }
+  
+  div.splash::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: calc(-1 * var(--description-slant-height, 50px));
+    border-style: solid;
+    border-width: 0 0 var(--description-slant-height, 50px) 100vw;
+    border-color: transparent transparent var(--description-background) transparent;
   }
 }
 
