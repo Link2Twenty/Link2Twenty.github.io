@@ -68,16 +68,14 @@ getDevRSS('link2twenty').then(data => {
   const parent = document.querySelector('#blog');
 
   for (let post of posts) {
-    const title = post.title;
     const published = new Date(post.published).toLocaleString('en-gb', {
       weekday: 'short',
       day: '2-digit',
       month: 'long',
       year: 'numeric'
     });
-    const url = post.url;
 
-    parent.appendChild(makePostCard(title, published, url))
+    parent.appendChild(makePostCard(post.title, published, post.url))
   }
 });
 
@@ -102,7 +100,6 @@ backdrop.addEventListener('click', _ => {
 })
 
 document.addEventListener('keyup', e => {
-  if (e.keyCode == 27 && !menuDraw.hasAttribute('aria-hidden')) {
+  if (e.keyCode == 27 && !menuDraw.hasAttribute('aria-hidden'))
     menuDraw.setAttribute('aria-hidden', "true");
-  }
 })
