@@ -2,61 +2,38 @@ function getDevRSS(user) {
   return new Promise(function (resolve, reject) {
     const url = "https://dev.to/feed/" + user;
     var oReq = new XMLHttpRequest();
+    // Resolve promise on load
     oReq.addEventListener("load", data => {
       resolve(data.target.responseXML)
     });
-    oReq.addEventListener("load", err => {
+    // Reject promise on error
+    oReq.addEventListener("error", err => {
       reject(err)
     });
-    oReq.addEventListener("abort", err => {
-      reject(err)
-    });
+
     oReq.open("GET", url);
     oReq.send();
   })
 }
 
-// Changes XML to JSON
-// https://davidwalsh.name/convert-xml-json
-function xmlToJson(xml) {
-
-  // Create the return object
-  var obj = {};
-
-  if (xml.nodeType == 1) { // element
-    
-    // do attributes
-    if (xml.attributes.length > 0) {
-      obj["@attributes"] = {};
-      for (var j = 0; j < xml.attributes.length; j++) {
-        var attribute = xml.attributes.item(j);
-        obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
-      }
-    }
-  } else if (xml.nodeType == 3) { // text
-    obj = xml.nodeValue;
+// Get post information from xml and return as 
+// array of objects
+// xml: the xml response
+// num: number of posts to be returned
+function xmlToPost(xml, num) {
+  const item = xml.getElementsByTagName('item');
+  const array = [];
+  for (let i = 0; i < num; i++) {
+    array.push({
+      "title": item[i].querySelector('title').textContent,
+      "published": item[i].querySelector('pubDate').textContent,
+      "url": item[i].querySelector('link').textContent
+    });
   }
+  return array;
+}
 
-  // do children
-  if (xml.hasChildNodes()) {
-    for (var i = 0; i < xml.childNodes.length; i++) {
-      var item = xml.childNodes.item(i);
-      var nodeName = item.nodeName;
-      if (typeof (obj[nodeName]) == "undefined") {
-        obj[nodeName] = xmlToJson(item);
-      } else {
-        if (typeof (obj[nodeName].push) == "undefined") {
-          var old = obj[nodeName];
-          obj[nodeName] = [];
-          obj[nodeName].push(old);
-        }
-        obj[nodeName].push(xmlToJson(item));
-      }
-    }
-  }
-  return obj;
-};
-
+// Returns element to be appended to the dom
 function makePostCard(title, published, url) {
   // Whole card
   const card = document.createElement('a');
@@ -84,24 +61,27 @@ function makePostCard(title, published, url) {
   return card;
 }
 
+// Read the RSS field and append card to the blog
+// section.
 getDevRSS('link2twenty').then(data => {
-  const posts = xmlToJson(data).rss.channel.item.slice(0, 3);
+  const posts = xmlToPost(data, 3);
   const parent = document.querySelector('#blog');
 
   for (let post of posts) {
-    const title = post.title['#text'];
-    const published = new Date(post.pubDate['#text']).toLocaleString('en-gb', {
+    const title = post.title;
+    const published = new Date(post.published).toLocaleString('en-gb', {
       weekday: 'short',
       day: '2-digit',
       month: 'long',
       year: 'numeric'
     });
-    const url = post.link['#text'];
+    const url = post.url;
 
     parent.appendChild(makePostCard(title, published, url))
   }
 });
 
+// Handle draw controls
 const menuButt = document.querySelector('nav button.menu');
 const menuDraw = document.querySelector('.slide_navigation');
 const menuLink = menuDraw.querySelectorAll('.menu a');
@@ -116,10 +96,6 @@ for (let link of menuLink) {
     menuDraw.setAttribute('aria-hidden', "true");
   })
 }
-
-backdrop.addEventListener('click', _ => {
-  menuDraw.setAttribute('aria-hidden', "true");
-})
 
 backdrop.addEventListener('click', _ => {
   menuDraw.setAttribute('aria-hidden', "true");
