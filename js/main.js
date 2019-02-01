@@ -21,13 +21,13 @@ function getDevRSS(user) {
 // xml: the xml response
 // num: number of posts to be returned
 function xmlToPost(xml, num) {
-  const item = xml.getElementsByTagName('item');
+  const item = xml.getElementsByTagName("item");
   const array = [];
   for (let i = 0; i < num; i++) {
     array.push({
-      "title": item[i].querySelector('title').textContent,
-      "published": item[i].querySelector('pubDate').textContent,
-      "url": item[i].querySelector('link').textContent
+      "title": item[i].querySelector("title").textContent,
+      "published": item[i].querySelector("pubDate").textContent,
+      "url": item[i].querySelector("link").textContent
     });
   }
   return array;
@@ -36,9 +36,9 @@ function xmlToPost(xml, num) {
 // Returns element to be appended to the dom
 function makePostCard(title, published, url) {
   // Whole card
-  const card = document.createElement('a');
-  card.classList.add('card');
-  card.classList.add('social');
+  const card = document.createElement("a");
+  card.classList.add("card");
+  card.classList.add("social");
   card.setAttribute("target", "_blank");
   card.setAttribute("href", url);
   card.setAttribute("rel", "noreferrer");
@@ -48,11 +48,11 @@ function makePostCard(title, published, url) {
   img.setAttribute("alt", "Blog's logo");
   // Post title
   const head = document.createElement("h3");
-  head.classList.add('center');
+  head.classList.add("center");
   head.appendChild(document.createTextNode(title));
   const date = document.createElement("p");
-  date.classList.add('date');
-  date.classList.add('center');
+  date.classList.add("date");
+  date.classList.add("center");
   date.appendChild(document.createTextNode(published));
   card.appendChild(img);
   card.appendChild(head);
@@ -63,16 +63,16 @@ function makePostCard(title, published, url) {
 
 // Read the RSS field and append card to the blog
 // section.
-getDevRSS('link2twenty').then(data => {
+getDevRSS("link2twenty").then(data => {
   const posts = xmlToPost(data, 3);
-  const parent = document.querySelector('#blog');
+  const parent = document.querySelector("#blog");
 
   for (let post of posts) {
-    const published = new Date(post.published).toLocaleString('en-gb', {
-      weekday: 'short',
-      day: '2-digit',
-      month: 'long',
-      year: 'numeric'
+    const published = new Date(post.published).toLocaleString("en-gb", {
+      weekday: "short",
+      day: "2-digit",
+      month: "long",
+      year: "numeric"
     });
 
     parent.appendChild(makePostCard(post.title, published, post.url))
@@ -80,26 +80,40 @@ getDevRSS('link2twenty').then(data => {
 });
 
 // Handle draw controls
-const menuButt = document.querySelector('nav button.menu');
-const menuDraw = document.querySelector('.slide_navigation');
-const menuLink = menuDraw.querySelectorAll('.menu a');
-const backdrop = menuDraw.querySelector('.backdrop');
+const menuButt = document.querySelector("nav button.menu");
+const menuDraw = document.querySelector(".slide_navigation");
+const menuLink = menuDraw.querySelectorAll(".menu a");
+const backdrop = menuDraw.querySelector(".backdrop");
 
-menuButt.addEventListener('click', _ => {
-  menuDraw.removeAttribute('aria-hidden');
-});
+const navBar = document.querySelector("nav");
+const header = document.querySelector("header");
+const mainCo = document.querySelector("#main_body");
+const footer = document.querySelector("footer");
 
-for (let link of menuLink) {
-  link.addEventListener('click', _ => {
-    menuDraw.setAttribute('aria-hidden', "true");
-  })
+function hideMenu() {
+  menuDraw.setAttribute("inert", "");
+  navBar.removeAttribute("inert");
+  header.removeAttribute("inert");
+  mainCo.removeAttribute("inert");
+  footer.removeAttribute("inert");
 }
 
-backdrop.addEventListener('click', _ => {
-  menuDraw.setAttribute('aria-hidden', "true");
-})
+function showMenu() {
+  menuDraw.removeAttribute("inert");
+  navBar.setAttribute("inert","");
+  header.setAttribute("inert","");
+  mainCo.setAttribute("inert","");
+  footer.setAttribute("inert","");
+}
 
-document.addEventListener('keyup', e => {
-  if (e.keyCode == 27 && !menuDraw.hasAttribute('aria-hidden'))
-    menuDraw.setAttribute('aria-hidden', "true");
+menuButt.addEventListener("click", showMenu);
+
+for (let link of menuLink) {
+  link.addEventListener("click", hideMenu);
+}
+
+backdrop.addEventListener("click", hideMenu)
+
+document.addEventListener("keyup", e => {
+  if (e.keyCode == 27 && !menuDraw.hasAttribute("inert")) hideMenu();
 })
