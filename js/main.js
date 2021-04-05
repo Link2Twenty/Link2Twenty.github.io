@@ -3,11 +3,11 @@ function getDevRSS(user) {
     const url = "https://dev.to/feed/" + user;
     var oReq = new XMLHttpRequest();
     // Resolve promise on load
-    oReq.addEventListener("load", data => {
+    oReq.addEventListener("load", function(data) {
       resolve(data.target.responseXML)
     });
     // Reject promise on error
-    oReq.addEventListener("error", err => {
+    oReq.addEventListener("error", function(err) {
       reject(err)
     });
 
@@ -63,7 +63,7 @@ function makePostCard(title, published, url) {
 
 // Read the RSS field and append card to the blog
 // section.
-getDevRSS("link2twenty").then(data => {
+getDevRSS("link2twenty").then(function(data) {
   const posts = xmlToPost(data, 3);
   const parent = document.querySelector("#blog");
 
@@ -114,6 +114,6 @@ for (let link of menuLink) {
 
 backdrop.addEventListener("click", hideMenu)
 
-document.addEventListener("keyup", e => {
+document.addEventListener("keyup", function(e) {
   if (e.keyCode == 27 && !menuDraw.hasAttribute("inert")) hideMenu();
 })
