@@ -110,7 +110,7 @@ function showMenu() {
 menuButt.addEventListener("click", showMenu);
 
 for (let i = 0; i < menuLink.length; i++) {
-  links[i].addEventListener("click", hideMenu);
+  menuLink[i].addEventListener("click", hideMenu);
 }
 
 backdrop.addEventListener("click", hideMenu)
