@@ -67,7 +67,8 @@ getDevRSS("link2twenty").then(function(data) {
   const posts = xmlToPost(data, 3);
   const parent = document.querySelector("#blog");
 
-  for (let post of posts) {
+  for (let i = 0; i < posts.length; i++) {
+    const post = posts[i];
     const published = new Date(post.published).toLocaleString("en-gb", {
       weekday: "short",
       day: "2-digit",
@@ -108,8 +109,8 @@ function showMenu() {
 
 menuButt.addEventListener("click", showMenu);
 
-for (let link of menuLink) {
-  link.addEventListener("click", hideMenu);
+for (let i = 0; i < menuLink.length; i++) {
+  links[i].addEventListener("click", hideMenu);
 }
 
 backdrop.addEventListener("click", hideMenu)
