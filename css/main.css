@@ -1,10 +1,4 @@
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFVZ0b.woff2) format('woff2');
-}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
 
 :root {
   --header-background: #37474F;
@@ -240,9 +234,8 @@ header.description::after {
 }
 
 .social img {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  display: block;
+  margin: 0 auto;
   width: 60px;
   transition: transform 100ms cubic-bezier(0.4, 0.0, 0.2, 1);
   will-change: transform;
@@ -304,7 +297,7 @@ a.social:focus{
 @media only screen and (min-width: 1200px) {
   a.social:hover img,
   a.social:focus img{
-    transform: translateX(-50%) scale(1.1) rotate(-10deg);
+    transform: scale(1.1) rotate(-10deg);
   }
   .profile {
     width: 150px;
