@@ -17,13 +17,13 @@
   --card-background: #fff;
   --card-color: #000;
 
-  --body-pattern: 
-    linear-gradient(90deg, var(--body-background) 20px, transparent 1%) center, 
-    linear-gradient(var(--body-background) 20px, var(--body-dot-colour) 1%) center, 
+  --body-pattern:
+    linear-gradient(90deg, var(--body-background) 20px, transparent 1%) center,
+    linear-gradient(var(--body-background) 20px, var(--body-dot-colour) 1%) center,
     var(--body-background);
-  
-  --material-shadow-1: 0 01px 03px rgba(0,0,0,0.12), 0 01px 02px rgba(0,0,0,0.24);
-  --material-shadow-2: 0 03px 06px rgba(0,0,0,0.16), 0 03px 06px rgba(0,0,0,0.23);
+
+  --material-shadow-1: 0 01px 03px rgba(0, 0, 0, 0.12), 0 01px 02px rgba(0, 0, 0, 0.24);
+  --material-shadow-2: 0 03px 06px rgba(0, 0, 0, 0.16), 0 03px 06px rgba(0, 0, 0, 0.23);
 }
 
 body {
@@ -58,13 +58,15 @@ button.menu {
   background: transparent;
   border: none;
 }
+
 button.menu span {
-  display:block;
+  display: block;
   width: 35px;
   height: 5px;
   background-color: var(--header-color);
   margin-top: 5px;
 }
+
 button.menu span:first-child {
   margin-top: 0px;
 }
@@ -89,7 +91,7 @@ button.menu span:first-child {
 }
 
 .slide_navigation ul.menu a {
-  display: block; 
+  display: block;
   text-decoration: none;
   color: var(--description-color);
   padding: 15px 0;
@@ -103,7 +105,7 @@ button.menu span:first-child {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   opacity: 0;
   pointer-events: none;
   transition: opacity 100ms cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -133,14 +135,14 @@ footer .contents {
   justify-content: space-between;
 }
 
-footer .contents a{
+footer .contents a {
   text-decoration: none;
-  color:currentColor;
+  color: currentColor;
   font-weight: bold;
 }
 
 footer .contents a:hover,
-footer .contents a:focus{
+footer .contents a:focus {
   text-decoration: underline;
 }
 
@@ -233,6 +235,10 @@ header.description::after {
   border-radius: 2px 2px 0 0;
 }
 
+.blog:has(+ .card-group:empty) {
+  display: none;
+}
+
 .social img {
   display: block;
   margin: 0 auto;
@@ -259,23 +265,24 @@ a.social {
 }
 
 a.social:hover h3,
-a.social:focus h3{
+a.social:focus h3 {
   text-decoration: underline;
 }
 
-a.social h3{
+a.social h3 {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
 a.social:hover,
-a.social:focus{
-    box-shadow: var(--material-shadow-2);
-  }
+a.social:focus {
+  box-shadow: var(--material-shadow-2);
+}
 
 /* Tablet Portrait */
 @media only screen and (min-width: 600px) {
+
   .card-group .card,
   #blog.card-group .card {
     min-width: calc((100% / 3) - 50px - 1em);
@@ -287,6 +294,7 @@ a.social:focus{
   :root {
     --description-slant-height: 45px;
   }
+
   .card-group .card,
   #blog.card-group .card {
     min-width: calc(25% - 50px - 1em);
@@ -295,26 +303,31 @@ a.social:focus{
 
 /* Desktop */
 @media only screen and (min-width: 1200px) {
+
   a.social:hover img,
-  a.social:focus img{
+  a.social:focus img {
     transform: scale(1.1) rotate(-10deg);
   }
+
   .profile {
     width: 150px;
     height: 150px;
     border-width: 8px;
   }
+
   .contents {
     width: 1150px;
   }
+
   .card-group .card {
     min-width: 200px;
   }
-  nav.header .contents{
+
+  nav.header .contents {
     display: flex;
     justify-content: space-between;
   }
-  
+
   nav.header ul.menu {
     margin: 0;
     display: inline-flex;
@@ -322,20 +335,20 @@ a.social:focus{
     list-style-type: none;
     padding-left: 0;
   }
-  
+
   nav.header ul.menu a {
     text-decoration: none;
     color: var(--header-color);
     margin: 0 6px;
   }
-  
+
   nav.header ul.menu a:hover,
   nav.header ul.menu a:focus {
     text-decoration: underline;
   }
 
   button.menu {
-    display:none;
+    display: none;
   }
 
   div.splash {
@@ -346,7 +359,7 @@ a.social:focus{
     background: var(--description-background);
     z-index: -1;
   }
-  
+
   div.splash::before {
     content: "";
     display: block;
