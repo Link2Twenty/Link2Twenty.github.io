@@ -1,38 +1,3 @@
-function getDevRSS(user) {
-  return new Promise(function (resolve, reject) {
-    const url = "https://dev.to/feed/" + user;
-    var oReq = new XMLHttpRequest();
-    // Resolve promise on load
-    oReq.addEventListener("load", function(data) {
-      resolve(data.target.responseXML)
-    });
-    // Reject promise on error
-    oReq.addEventListener("error", function(err) {
-      reject(err)
-    });
-
-    oReq.open("GET", url);
-    oReq.send();
-  })
-}
-
-// Get post information from xml and return as 
-// array of objects
-// xml: the xml response
-// num: number of posts to be returned
-function xmlToPost(xml, num) {
-  const item = xml.getElementsByTagName("item");
-  const array = [];
-  for (let i = 0; i < num; i++) {
-    array.push({
-      "title": item[i].querySelector("title").textContent,
-      "published": item[i].querySelector("pubDate").textContent,
-      "url": item[i].querySelector("link").textContent
-    });
-  }
-  return array;
-}
-
 // Returns element to be appended to the dom
 function makePostCard(title, published, url) {
   // Whole card
@@ -61,15 +26,11 @@ function makePostCard(title, published, url) {
   return card;
 }
 
-// Read the RSS field and append card to the blog
-// section.
-getDevRSS("link2twenty").then(function(data) {
-  const posts = xmlToPost(data, 3);
+// Fetch blog posts
+fetch('https://dev.to/api/articles?username=link2twenty&per_page=3').then((res) => res.json()).then((posts) => {
   const parent = document.querySelector("#blog");
-
-  for (let i = 0; i < posts.length; i++) {
-    const post = posts[i];
-    const published = new Date(post.published).toLocaleString("en-gb", {
+  for (const post of posts) {
+    const published = new Date(post.published_at).toLocaleString("en-gb", {
       weekday: "short",
       day: "2-digit",
       month: "long",
@@ -101,10 +62,10 @@ function hideMenu() {
 
 function showMenu() {
   menuDraw.removeAttribute("inert");
-  navBar.setAttribute("inert","");
-  header.setAttribute("inert","");
-  mainCo.setAttribute("inert","");
-  footer.setAttribute("inert","");
+  navBar.setAttribute("inert", "");
+  header.setAttribute("inert", "");
+  mainCo.setAttribute("inert", "");
+  footer.setAttribute("inert", "");
 }
 
 menuButt.addEventListener("click", showMenu);
@@ -115,6 +76,6 @@ for (let i = 0; i < menuLink.length; i++) {
 
 backdrop.addEventListener("click", hideMenu)
 
-document.addEventListener("keyup", function(e) {
-  if (e.keyCode == 27 && !menuDraw.hasAttribute("inert")) hideMenu();
+document.addEventListener("keyup", function (e) {
+  if (e.key === "Escape" && !menuDraw.hasAttribute("inert")) hideMenu();
 })
