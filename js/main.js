@@ -9,7 +9,7 @@ function makePostCard(title, published, url) {
   card.setAttribute("rel", "noreferrer");
   // Dev logo
   const img = document.createElement("img");
-  img.setAttribute("src", "./images/devto.png");
+  img.setAttribute("src", "./images/devto.webp");
   img.setAttribute("alt", "Blog's logo");
   // Post title
   const head = document.createElement("h3");
